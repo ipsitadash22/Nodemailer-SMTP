@@ -16,6 +16,10 @@ Provides Feedback:
 If everything goes well, it prints a message saying "Email sent successfully."
 If there's a problem, it prints an error message to help you debug the issue.
 In a nutshell, this program automates sending an email with an attachment and some visual content using your Gmail account.
+
+
+
+
 USE CASE:
 Sure, here are some use cases for this Node.js project that sends an email with Nodemailer:
 
