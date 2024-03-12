@@ -26,6 +26,13 @@ Sure, here are some use cases for this Node.js project that sends an email with 
 General Notifications:
 
 Welcome Emails: When a new user signs up for your web application, you can send an automated welcome email with instructions on how to get started.
+
+
+
 Order Confirmations: After a customer places an order on your e-commerce website, you can send an email confirmation with details about their purchase.
+
+
 Password Reset Requests: If a user forgets their password, they can request a reset link that will be sent to their email address.
+
+
 Account Update Notifications: Whenever a user's account information is updated (e.g., email address, password), you can send a notification email for security purposes.
