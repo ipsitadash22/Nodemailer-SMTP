@@ -1,0 +1,52 @@
+const nodemailer = require('nodemailer');
+const axios = require('axios'); // Add this line to use axios for making HTTP requests
+
+// Function to generate QR code URL
+function generateQRCodeURL(content) {
+    return https://chart.googleapis.com/chart?cht=qr&chl=${encodeURIComponent(content)}&chs=160x160&chld=L|0;
+}
+
+// Function to send email with QR code
+async function sendMail() {
+    // Create an email transporter
+    const transporter = nodemailer.createTransport({
+        service: 'gmail',
+        auth: {
+            user: 'dashipsita60@gmail.com',
+            pass: 'vuzm rzwf xwry oeds'
+        }
+    });
+
+    // Generate QR code URL from the first program
+    const qrCodeURL = generateQRCodeURL('Hello World'); // You can replace 'Hello World' with the content from the input field in the first program
+
+    // Make HTTP request to get the QR code image
+    const { data: qrCodeImage } = await axios.get(qrCodeURL, { responseType: 'arraybuffer' });
+
+    // Configure email content
+    const mailOptions = {
+        from: 'dashipsita60@gmail.com',
+        to: 'dashsouradeep@gmail.com',
+        subject: 'Welcome to NodeJS App with QR Code',
+        text: 'This is an email using nodemail in nodejs with a QR Code',
+        html: '<img src="cid:qrcode">', // Use 'cid:qrcode' as the image source
+        attachments: [
+            {
+                filename: 'qrcode.png',
+                content: qrCodeImage,
+                encoding: 'base64',
+                cid: 'qrcode' // Use 'cid' to reference the image in the HTML
+            }
+        ]
+    };
+
+    // Send email
+    try {
+        const result = await transporter.sendMail(mailOptions);
+        console.log('Email sent successfully');
+    } catch (error) {
+        console.log('Email send failed with error:', error);
+    }
+}
+
+sendMail();
